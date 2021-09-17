@@ -28,8 +28,8 @@ for i in range(effect_frames):
     dx = int( w * i / effect_frames)
 
     frame = np.zeros((h,w,3), dtype=np.uint8)
-    frame[:, 0: effect_frames - dx, :] = frame1[:, 0: effect_frames - dx, :] # 우측에서부터 사라짐
-    frame[:, effect_frames - dx:w, :] = frame2[:, effect_frames - dx:w, :]
+    frame[:, 0: w - dx, :] = frame1[:, 0: w - dx, :] # 우측에서부터 사라짐
+    frame[:, w - dx:w, :] = frame2[:, w - dx:w, :]
 
     out.write(frame1)
     cv2.imshow('frame', frame)
