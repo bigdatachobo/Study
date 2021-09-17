@@ -1,15 +1,20 @@
 import cv2
-import sys
+import numpy as np
 
-cap = cv2.VideoCapture(0)
+img = np.full((400,600,3), (255,255,255), dtype=np.uint8)
 
-while True:
-    ret, frame = cap.read()
+blue = (255,0,0)
+red = (0,0,255)
 
-    cv2.imshow('frame', frame)
-    cv2.imshow('gray', cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY))
-    # cv2.imshow('inversed', ~frame)
-    if cv2.waitKey(10) == 27:
-        break
-cap.release()
-cv2.destroyAllWindows()    
+# 타원 그리기
+cv2.ellipse(img, (300,200), (100,100), -8, 0, 180, blue, -1)
+cv2.ellipse(img, (300,200), (100,100), -8, 180, 360, red, -1)
+cv2.ellipse(img, (349,194), (50,50), -8, 180, 360, blue, -1)
+cv2.ellipse(img, (250,208), (49,49), -8, 0, 180, red, -1)
+
+# 텍스트 삽입
+cv2.putText(img, 'Tae Geuk Ki', (100,50), cv2.FONT_HERSHEY_TRIPLEX, 2, (0,0,0), 3)
+
+cv2.imshow('circle',img)
+cv2.waitKey()
+cv2.destroyAllWindows()
