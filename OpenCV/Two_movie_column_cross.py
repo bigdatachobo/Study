@@ -32,8 +32,8 @@ for i in range(effect_frames):
     frame[:, 0: w - dx, :] = frame1[:, 0: w - dx, :] # 우측에서부터 사라짐
     frame[:, w - dx:w, :] = frame2[:, w - dx:w, :]
     
-    # frame[:, 0: dx, :] = frame1[:, 0: dx, :] # 좌측에서부터 사라짐
-    # frame[:, dx:w, :] = frame2[:, dx:w, :]
+    # frame[:, 0: dx, :] = frame2[:, 0: dx, :] # 좌측에서부터 사라짐
+    # frame[:, dx:w, :] = frame1[:, dx:w, :]
 
     out.write(frame1)
     cv2.imshow('frame', frame)
